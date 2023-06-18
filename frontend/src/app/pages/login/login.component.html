@@ -1,0 +1,40 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row " style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-centre">
+                    <img style="width: 15%;" src="../../../assets/logo.webp" alt="loading...">
+                </div>
+                    <h1 class="text-centre">LOGIN</h1>
+                    <mat-card style=" background:#FFFDE7;">
+                    <form >
+                        <!-- username -->
+                        <mat-form-field  class="full-width"appearance="outline">
+                            <mat-label>UserName</mat-label>
+                            <input
+                            required
+                             matInput 
+                             placeholder="Enter">
+                             <mat-hint>Enter a Valid Username</mat-hint>
+                          </mat-form-field>
+
+
+                          <!-- password -->
+                        <mat-form-field  class="full-width"appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input 
+                            type="password" matInput placeholder="Enter">
+                          </mat-form-field>
+
+                          <div class="container text-centre">
+                            <a  
+                            routerLink="/main"
+                            type="submit" mat-raised-button color="primary">Login</a>
+                            <!-- <button  class="ml20" mat-raised-button color="accent">Reset</button> -->
+                          </div>
+                    </form>
+                    </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
