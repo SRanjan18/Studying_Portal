@@ -10,35 +10,65 @@
       <form (ngSubmit)="onSubmit()" #signupForm="ngForm" style="background:#FFFDE7; ">
         <div class="form-group">
           <label style="font-size: 20px;">UserName</label><br>
-          <input [(ngModel)]="user.username" name="username" style="width: 80%; height:40px" placeholder="Enter" required minlength="2" pattern="[a-zA-Z]{1,26}" #usernameInput="ngModel">
-          <div *ngIf="usernameInput.errors?.['required']" class="text-danger">Username is required.</div>
-          <div *ngIf="usernameInput.errors?.['minlength']" class="text-danger">Username must be at least 2 characters long.</div>
-          <div *ngIf="usernameInput.errors?.['pattern']" class="text-danger">Username must contain only alphabets.</div>
+          <input 
+            [(ngModel)]="user.username" 
+            name="username" 
+            style="width: 80%; height:40px" 
+            placeholder="Enter UserName" 
+            required minlength="2" 
+            pattern="[a-zA-Z]{1,26}" 
+            #usernameInput="ngModel"
+          >
+          <div *ngIf="usernameInput.errors?.['required'] && usernameInput.touched" class="text-danger">Username is required.</div>
+          <div *ngIf="usernameInput.errors?.['minlength'] && usernameInput.touched" class="text-danger">Username must be at least 2 characters long.</div>
+          <div *ngIf="usernameInput.errors?.['pattern'] && usernameInput.touched" class="text-danger">Username must contain only alphabets.</div>
         </div>
-
+      
         <div class="form-group">
           <label style="font-size: 20px;">Email</label><br>
-          <input [(ngModel)]="user.email" name="email" type="email" style="width: 80%; height:40px" placeholder="Enter" required pattern="[a-zA-Z0-9_]+@mail.com" #emailInput="ngModel">
-          <div *ngIf="emailInput.errors?.['required']" class="text-danger">Email is required.</div>
-          <div *ngIf="emailInput.errors?.['pattern']" class="text-danger">Invalid email format. Please enter a valid email address.</div>
+          <input 
+            [(ngModel)]="user.email" 
+            name="email" 
+            type="email" 
+            style="width: 80%; height:40px" 
+            placeholder="Enter Email" 
+            required 
+            pattern="[a-zA-Z0-9_]+@mail.com" 
+            #emailInput="ngModel"
+          >
+          <div *ngIf="emailInput.errors?.['required'] && emailInput.touched" class="text-danger">Email is required.</div>
+          <div *ngIf="emailInput.errors?.['pattern'] && emailInput.touched" class="text-danger">Invalid email format. Please enter a valid email address.</div>
         </div>
-
+      
         <div class="form-group">
           <label style="font-size: 20px; margin-bottom: 0px;">Password</label><br>
-          <input [(ngModel)]="user.password" name="password" type="password" style="width: 80%; height:40px" placeholder="Enter" required minlength="4" #passwordInput="ngModel">
-          <div *ngIf="passwordInput.errors?.['required']" class="text-danger">Password is required.</div>
-          <div *ngIf="passwordInput.errors?.['minlength']" class="text-danger">Password must be at least 4 characters long.</div>
+          <input 
+            [(ngModel)]="user.password" 
+            name="password" 
+            type="password" 
+            style="width: 80%; height:40px" 
+            placeholder="Enter Password" 
+            required 
+            minlength="4" 
+            #passwordInput="ngModel"
+          >
+          <div *ngIf="passwordInput.errors?.['required'] && passwordInput.touched" class="text-danger">Password is required.</div>
+          <div *ngIf="passwordInput.errors?.['minlength'] && passwordInput.touched" class="text-danger">Password must be at least 4 characters long.</div>
         </div>
         <div class="text-center">
-          <button type="submit" [disabled]="signupForm.invalid" 
+          <button 
+            type="submit" 
+            [disabled]="signupForm.invalid" 
             [style.cursor]="signupForm.invalid ? 'not-allowed' : 'pointer'"
             [style.backgroundColor]="signupForm.invalid ? 'grey' : 'rgb(199, 126, 138)'"
-            
-            style="font-size: 20px; width: 200px; height: 50px; color:white">SignUp</button>
+            style="font-size: 20px; width: 200px; height: 50px; color:white"
+          >
+            SignUp
+          </button>
         </div>
-        
         <br/>
       </form>
+      
       
       <br>
       <div class="text-center"> Existing User? &nbsp;<a routerLink="/login">Signin</a></div>
