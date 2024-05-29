@@ -1,0 +1,12 @@
+  
+  div{
+    background-color: aqua;
+    padding:20px;
+    margin:0;
+    text-align: center;
+    position: fixed;
+    width: 97.2%;
+    bottom:0;
+    border-top:  solid 3px  rgba(247, 200, 209, 0.8);
+    background-color: rgba(244, 222, 226, 0.8);
+  }

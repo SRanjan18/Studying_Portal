@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  .col-md-6 {
+    text-align: center; 
+  }
+  
+  .text-center {
+    margin-top: 10px; 
+    margin-bottom: 10px;
+  }
+  .form-group label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: block; /* Display labels on new lines */
+  }
+  
+  .form-group input {
+    width: 80%; /* Increase input width */
+  }
+  
+ 
+  

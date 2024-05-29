@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6" style="margin-top: 20px;">
+        <div class="text-center">
+          <img style="width: 10%;" src="../../../assets/logo.webp" alt="loading...">
+        </div>
+        <h1 class="text-center">LOGIN</h1>
+        
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm" style="background:#FFFDE7;">
+  
+          <div class="form-group">
+            <label style="font-size: 20px;">Email</label><br>
+            <input
+            required
+            [(ngModel)]="loginData.email"
+            name="email"
+            type="email"
+            placeholder="Enter your Email"
+            style="width: 80%; height:40px"
+            pattern="[a-zA-Z0-9_]+@mail.com"
+            #emailInput="ngModel"
+        >
+        <div *ngIf="emailInput.errors?.['required']" class="text-danger">Email is required.</div>
+            <div *ngIf="emailInput.errors?.['pattern']" class="text-danger">Invalid email format. Please enter a valid email address.</div>
+          </div>
+  
+          <div class="form-group">
+            <label style="font-size: 20px; margin-bottom: 0px;">Password</label><br>
+           
+            <input
+            required
+            [(ngModel)]="loginData.password"
+            name="password"
+            type="password"
+            matInput
+            placeholder="Enter your password"
+            style="width: 80%; height:40px"
+            required minlength="4"
+            #passwordInput="ngModel"
+        > 
+        <div *ngIf="passwordInput.errors?.['required']" class="text-danger">Password is required.</div>
+        <div *ngIf="passwordInput.errors?.['minlength']" class="text-danger">Password must be at least 4 characters long.</div>
+       </div>
+          <div class="text-center">
+            <button type="submit" [disabled]="loginForm.invalid" 
+              [style.cursor]="loginForm.invalid ? 'not-allowed' : 'pointer'"
+              [style.backgroundColor]="loginForm.invalid ? 'grey' : 'rgb(199, 126, 138)'"
+              
+              style="font-size: 20px; width: 200px; height: 50px; color:white">Login</button>
+          </div>
+          
+          <br/>
+        </form>
+        
+        <br>
+        <div class="text-center">Don't have an account?  &nbsp;<a routerLink="/signup">SignUp</a></div>
+      </div>
+    </div>
+  </div>
