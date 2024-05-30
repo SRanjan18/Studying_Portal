@@ -9,6 +9,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: Employees
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -19,9 +33,20 @@ jobs:
           distribution: 'temurin' # You can also use 'zulu' or other distributions
           java-version: '17'
 
+      - name: Wait for MySQL to be ready
+        run: |
+          while ! mysqladmin ping --host="127.0.0.1" --port=3306 --user="root" --password="root" --silent; do
+            echo "Waiting for MySQL to be ready..."
+            sleep 5
+          done
+
       - name: Build with Maven
         working-directory: studyingPortal
         run: mvn clean package
+        env:
+          SPRING_DATASOURCE_URL: "jdbc:mysql://localhost:3306/Employees"
+          SPRING_DATASOURCE_USERNAME: "root"
+          SPRING_DATASOURCE_PASSWORD: "root"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
