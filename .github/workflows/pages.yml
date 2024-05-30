@@ -61,7 +61,7 @@ jobs:
           name: github-pages
           path: _site
       - name: Wait for artifact metadata
-        run: sleep 10  # Adjust the delay time as needed    
+        run: sleep 120  # Adjust the delay time as needed    
       - name: Deploy to GitHub Pages
         if: success()
         uses: actions/deploy-pages@v4
