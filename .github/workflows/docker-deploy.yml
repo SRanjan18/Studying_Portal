@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker images
+        working-directory: studyingPortal   # Specify the directory
         run: |
-          cd studyingPortal
           docker-compose build
           docker-compose push
