@@ -62,7 +62,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker images
-        working-directory: ./studyingPortal  # Set working directory to where docker-compose.yml is located
+        working-directory: studyingPortal  # Set working directory to where docker-compose.yml is located
         run: |
           docker-compose build
           docker-compose push
