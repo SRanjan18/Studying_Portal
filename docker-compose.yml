@@ -13,7 +13,7 @@ services:
   backend:
     build:
       context: ./studyingPortal
-      dockerfile: Dockerfile   # Assuming your Dockerfile for the backend is named "Dockerfile"
+      dockerfile: Dockerfile
     container_name: ems_backend
     ports:
       - "8080:8080"
