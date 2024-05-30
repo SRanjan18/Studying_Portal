@@ -1,4 +1,4 @@
-name: Angular to GitHub Pages
+name:  GitHub Pages
 
 on:
   push:
@@ -36,3 +36,20 @@ jobs:
         with:
           name: frontend-build
           path: frontend/docs  # Adjust the path to match the output directory
+
+      # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: angular-app
+          path: frontend/docs
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
