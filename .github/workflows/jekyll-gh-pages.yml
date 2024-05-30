@@ -56,8 +56,7 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: PUT /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/rerun
-          headers: |
-            Authorization: ${{ secrets.GITHUB_TOKEN }}
+          mediaType: '{"previews":["ant-man"]}' # This is necessary for the rerun endpoint
         if: steps.download-artifact.outputs.artifacts_count == 0
         continue-on-error: true
 
