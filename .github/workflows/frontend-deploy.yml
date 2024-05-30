@@ -24,12 +24,13 @@ jobs:
       - name: Install dependencies
         working-directory: frontend
         run: npm install --legacy-peer-deps  # Install project dependencies
-
+        
       - name: Build Angular project
         working-directory: frontend
         run: |
-          npm install @angular/compiler@latest  # Install or update @angular/compiler
+          npm install --force --legacy-peer-deps @angular/compiler@latest  # Install or update @angular/compiler
           npm run build -- --configuration=production --output-path=docs --base-href=/
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2  # Use the upload-artifact action instead
