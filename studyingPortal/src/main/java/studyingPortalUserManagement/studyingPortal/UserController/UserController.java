@@ -25,13 +25,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
         }
     }
-
-//    @PostMapping(path = "/login")
-//    public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDto)
-//    {
-//        LoginResponse loginResponse = userService.loginEmployee(loginDto);
-//        return ResponseEntity.ok(loginResponse);
-//    }
     @PostMapping(path = "/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDto) {
         LoginResponse loginResponse = userService.loginEmployee(loginDto);
