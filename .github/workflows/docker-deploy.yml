@@ -24,6 +24,6 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          cd backend
+          cd studyingPortal
           docker-compose build
           docker-compose push
