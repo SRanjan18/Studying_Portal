@@ -4,7 +4,8 @@ name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["feature/github-actions"]
+    branches:
+      - feature/github-actions
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,7 +42,7 @@ jobs:
           npm install --force --legacy-peer-deps @angular/compiler@latest
           npm run build -- --configuration=production --output-path=../_site --base-href=frontend/docs
       - name: Upload artifact
-        uses: actions/upload-artifact@v4  # Ensure using v4
+        uses: actions/upload-artifact@v2  # Change to v2
         with:
           name: github-pages  # Change artifact name to match deployment step
           path: _site  # Adjust the path to match the output directory
