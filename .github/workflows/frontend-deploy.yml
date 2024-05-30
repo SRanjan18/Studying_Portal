@@ -1,4 +1,4 @@
-name:  GitHub Pages
+name: GitHub Pages
 
 on:
   push:
@@ -37,7 +37,6 @@ jobs:
           name: frontend-build
           path: frontend/docs  # Adjust the path to match the output directory
 
-      # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -48,7 +47,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: angular-app
+          name: frontend-build  # Update the artifact name to match the one uploaded
           path: frontend/docs
       - name: Deploy to GitHub Pages
         id: deployment
