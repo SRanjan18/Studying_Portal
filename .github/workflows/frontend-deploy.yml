@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Update to Node.js version 16
+          node-version: '18'  # Update to Node.js version 18
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli@latest  # Install or update Angular CLI globally
@@ -30,7 +30,6 @@ jobs:
         run: |
           npm install --force --legacy-peer-deps @angular/compiler@latest  # Install or update @angular/compiler
           npm run build -- --configuration=production --output-path=docs --base-href=/
-
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2  # Use the upload-artifact action instead
