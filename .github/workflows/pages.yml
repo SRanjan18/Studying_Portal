@@ -23,8 +23,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
+  # Build and deploy job
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,12 +33,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'  # Use Node.js version 18.x
-      - name: Install dependencies
-        working-directory: frontend
-        run: npm install --legacy-peer-deps
-      - name: Build Angular project
+      - name: Install dependencies and build Angular project
         working-directory: frontend
         run: |
+          npm install --legacy-peer-deps
           npm install --force --legacy-peer-deps @angular/compiler@latest
           npm run build -- --configuration=production --output-path=../_site --base-href=frontend/docs
       - name: Upload artifact
@@ -46,22 +44,8 @@ jobs:
         with:
           name: github-pages
           path: _site
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: github-pages
-          path: _site
-      - name: Wait for artifact metadata
-        run: sleep 120  # Adjust the delay time as needed    
       - name: Deploy to GitHub Pages
-        if: success()
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_dir: ./_site
