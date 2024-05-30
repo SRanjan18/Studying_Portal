@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: frontend-build
+          name: github-pages  # Change artifact name to match deployment step
           path: _site  # Adjust the path to match the output directory
 
   # Deployment job
@@ -57,8 +57,9 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: frontend-build
+          name: github-pages  # Match the artifact name with the one uploaded
           path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
