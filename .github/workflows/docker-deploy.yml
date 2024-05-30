@@ -30,7 +30,7 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          distribution: 'temurin' # You can also use 'zulu' or other distributions
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Wait for MySQL to be ready

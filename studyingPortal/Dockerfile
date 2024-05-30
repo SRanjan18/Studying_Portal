@@ -1,17 +1,14 @@
-# Use a base image with Java runtime
+# Use the official OpenJDK image from the Docker Hub
 FROM openjdk:11-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the packaged JAR file into the container
-# COPY target/studyingPortal-0.0.1-SNAPSHOT.jar /app/app.jar
+# Copy the Spring Boot jar file into the container
 COPY studyingPortal/target/studyingPortal-0.0.1-SNAPSHOT.jar /app/app.jar
 
-
-
-# Expose the port that the application will run on
+# Expose the application port
 EXPOSE 8080
 
-# Command to run the application
-CMD ["java", "-jar", "app.jar"]
+# Run the jar file
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
