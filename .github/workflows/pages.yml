@@ -42,10 +42,10 @@ jobs:
           npm install --force --legacy-peer-deps @angular/compiler@latest
           npm run build -- --configuration=production --output-path=../_site --base-href=frontend/docs
       - name: Upload artifact
-        uses: actions/upload-artifact@v2  # Change to v2
+        uses: actions/upload-artifact@v2
         with:
-          name: github-pages  # Change artifact name to match deployment step
-          path: _site  # Adjust the path to match the output directory
+          name: github-pages
+          path: _site
 
   # Deployment job
   deploy:
@@ -56,10 +56,10 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2  # Ensure using v2
+        uses: actions/download-artifact@v2
         with:
-          name: github-pages  # Match the artifact name with the one uploaded
+          name: github-pages
           path: _site
       - name: Deploy to GitHub Pages
-        id: deployment
+        if: success()
         uses: actions/deploy-pages@v4
