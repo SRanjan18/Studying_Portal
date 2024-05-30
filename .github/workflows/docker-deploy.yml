@@ -48,6 +48,10 @@ jobs:
           SPRING_DATASOURCE_USERNAME: "root"
           SPRING_DATASOURCE_PASSWORD: "root"
 
+      - name: List target directory contents
+        working-directory: studyingPortal
+        run: ls -l target
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
