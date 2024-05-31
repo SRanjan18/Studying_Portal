@@ -1,3 +1,6 @@
 # _config.yml
 title: StudyingPortal
 description: Website to study
+baseurl: "/Studying_Portal" # Ensure this matches your GitHub repository name
+url: "https://sranjan18.github.io" # Your GitHub Pages URL
+
