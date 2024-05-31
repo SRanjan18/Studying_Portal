@@ -21,14 +21,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.19.0'  # Updated to a compatible Node.js version
+          node-version: '18.19.0'  # Ensure Node.js version is 18.19.0 or later
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
         working-directory: ./frontend
 
       - name: Build project
-        run: npm run build -- --output-path=docs --base-href https://sranjan18.github.io/
+        run: npm run build -- --output-path=docs --base-href=https://sranjan18.github.io/
         working-directory: ./frontend
 
       - name: Upload to artifact
