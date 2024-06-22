@@ -3,7 +3,7 @@ name: Build and Deploy Spring Boot with Docker
 on:
   push:
     branches:
-      - feature/github-actions
+      - feature/githubActions-backend
 
 jobs:
   build:
